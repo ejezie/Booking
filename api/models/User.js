@@ -21,6 +21,6 @@ const UserSchema = Schema({
         type: Boolean,
         default: false,
     }
-})
+}, {timestamps: true})
 
 export default model("User", UserSchema);
