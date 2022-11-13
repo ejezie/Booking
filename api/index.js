@@ -37,8 +37,15 @@ app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 
 app.use((err, req, res, next) => {
-  return res.status(500).json("Error from handler")
-})
+  const errorMessage = err.message || "An error has occured";
+  const errorStatus = err.status || "500";
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  });
+});
 
 app.listen(8800, () => {
   connectMongo();
