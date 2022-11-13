@@ -36,6 +36,10 @@ app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 
+app.use((err, req, res, next) => {
+  return res.status(500).json("Error from handler")
+})
+
 app.listen(8800, () => {
   connectMongo();
   console.log("Listening on port 8800");
