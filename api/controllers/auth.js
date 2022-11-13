@@ -9,7 +9,7 @@ export const register = async (req, res, next) => {
         })
 
         await newUser.save();
-        res.satus(200).send("New user created successfuly!")
+        res.status(200).send("New user created successfuly!")
 
     }catch(err){
         next(err);
