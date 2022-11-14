@@ -5,8 +5,8 @@ import { makeError } from "../utils/error.js";
 export const register = async (req, res, next) => {
     try{
 
-        const salt = bycrpt.genSaltSync(10);
-        const hash = bycrpt.hashSync(req.body.password, salt)
+        const salt = await bycrpt.genSaltSync(10);
+        const hash = await bycrpt.hashSync(req.body.password, salt)
 
         const newUser = new User({
             username: req.body.username,
@@ -24,7 +24,7 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
     try{
-        const user = User.findOne(req.body.username)
+        const user = await User.findOne({username: req.body.username})
         if(!user) return next(makeError(404, "user not found"));
 
         const isPasswordCorect = await bycrpt.compare(req.body.password, user.password);
