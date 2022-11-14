@@ -5,8 +5,8 @@ import { makeError } from "../utils/error.js";
 export const register = async (req, res, next) => {
     try{
 
-        const salt = await bycrpt.genSaltSync(10);
-        const hash = await bycrpt.hashSync(req.body.password, salt)
+        const salt = bycrpt.genSaltSync(10);
+        const hash = bycrpt.hashSync(req.body.password, salt)
 
         const newUser = new User({
             username: req.body.username,
