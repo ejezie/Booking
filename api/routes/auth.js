@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/register", register);
 router.post("/login", login);
-router.post("/checkAuth", verifyToken, (req, res, next) => {
+router.get("/checkAuth", verifyToken, (req, res, next) => {
     res.send("hello")
 });
 
