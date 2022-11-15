@@ -12,10 +12,10 @@ export const getAllUsers = async (req, res, next) =>  {
 import Hotel from "../models/Hotel.js";
 
 export const createUser = async (req, res, next) => {
-    const newHotel = new User(req.body);
+    const newUser = new User(req.body);
     try{
-        const savedHotel = await newHotel.save() ;
-        res.status(200).json(savedHotel);
+        const savedUser = await newHotel.save() ;
+        res.status(200).json(savedUser);
     }catch(err){
         next(err);
     }
@@ -23,8 +23,8 @@ export const createUser = async (req, res, next) => {
 
 export const updateUser = async (req, res, next) => {
      try{
-        const updatedHotel = await User.findByIdAndUpdate(req.params.id, { $set: req.body }, {new: true}) 
-        res.status(200).json(updatedHotel)
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, { $set: req.body }, {new: true}) 
+        res.status(200).json(updatedUser)
     }catch(err){
         next(err)
     }
@@ -32,8 +32,8 @@ export const updateUser = async (req, res, next) => {
 
 export const getUserById = async (req, res, next) => {
      try{
-        const hotel = await User.findById(req.params.id) 
-        res.status(200).json(hotel)
+        const user = await User.findById(req.params.id) 
+        res.status(200).json(user)
     }catch(err){
         next()
     }
@@ -42,7 +42,7 @@ export const getUserById = async (req, res, next) => {
 export const deleteUser = async (req, res, next) => {
     try{
         await User.findByIdAndDelete(req.params.id)
-        res.status(200).json("Hotel deleted succesfully")
+        res.status(200).json("User deleted succesfully")
     }catch(err){
         next(err)
     }
