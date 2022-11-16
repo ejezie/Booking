@@ -14,10 +14,10 @@ router.get('/:id', getUserById)
 
 router.put('/:id', updateUser)
 
-router.get ("/checkAuth", verifyToken, (req, res, next) => {
+router.get("/checkAuth", verifyToken, (req, res, next) => {
     res.send("hello")
 });
-router.get ("/checkUser", verifyUser, (req, res, next) => {
+router.get("/checkUser/:id", verifyUser, (req, res, next) => {
     res.send("hello, welcome, you can delete your account!")
 });
 

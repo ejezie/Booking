@@ -15,7 +15,7 @@ export const verifyToken = (req, res, next) => {
 
 export const verifyUser = (req, res, next) => {
   verifyToken(req, res, () => {
-    if (req.param.id === user.id || req.user.isAdmin) {
+    if (req.user.id === req.params.id || req.user.isAdmin) {
       next();
     } else {
       if (err) next(makeError(403, "Invalid Token"));
