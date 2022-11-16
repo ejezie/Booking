@@ -44,3 +44,12 @@ const getAllRooms = async (req, res, next) => {
         next(err);
     }
 }
+
+const deleteRoom = async (req, res, next) => {
+    try{
+        await Room.findByIdAndDelete(req.params.id)
+        res.status(200).send("Room deleted successfully")
+    }catch(err){
+        next(err)
+    }
+}
