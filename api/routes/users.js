@@ -17,5 +17,8 @@ router.put('/:id', updateUser)
 router.get ("/checkAuth", verifyToken, (req, res, next) => {
     res.send("hello")
 });
+router.get ("/checkUser", verifyToken, (req, res, next) => {
+    res.send("hello")
+});
 
 export default router;
