@@ -9,17 +9,15 @@ export const getAllUsers = async (req, res, next) =>  {
     }
 }
 
-import Hotel from "../models/Hotel.js";
-
-export const createUser = async (req, res, next) => {
-    const newUser = new User(req.body);
-    try{
-        const savedUser = await newHotel.save() ;
-        res.status(200).json(savedUser);
-    }catch(err){
-        next(err);
-    }
-}
+// export const createUser = async (req, res, next) => { 
+//     const newUser = new User(req.body);
+//     try{
+//         const savedUser = await newHotel.save() ;
+//         res.status(200).json(savedUser);
+//     }catch(err){
+//         next(err);
+//     }
+// }
 
 export const updateUser = async (req, res, next) => {
      try{
