@@ -19,7 +19,7 @@ const RoomSchema = Schema({
         type: Number,
         required: true,
     },
-    roomNumber: [{number: Number, unavailableDates: {type: [Date]}}],
+    roomNumbers: [{number: Number, unavailableDates: {type: [Date]}}],
     photos: {
         type: [String],
     },
