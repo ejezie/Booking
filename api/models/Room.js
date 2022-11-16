@@ -39,14 +39,6 @@ const RoomSchema = Schema({
     room: {
         type: String,
     },
-    cheapestPrice: {
-        type: Number,
-        required: true,
-    },
-    featured: {
-        type: Boolean,
-        default: false,
-    }
 })
 
 export default model("Room", RoomSchema);
