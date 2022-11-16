@@ -10,9 +10,9 @@ router.get('/', getAllUsers)
 
 router.delete('/:id', deleteUser)
 
-router.get('/:id', getUserById)
+router.get('/:id', verifyUser, getUserById)
 
-router.put('/:id', updateUser)
+router.put('/:id', verifyUser, updateUser)
 
 // router.get("/checkAuth", verifyToken, (req, res, next) => {
 //     res.send("hello")
