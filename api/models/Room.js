@@ -28,9 +28,6 @@ const RoomSchema = Schema({
         min: 0,
         max: 5
     },
-    room: {
-        type: String,
-    },
 })
 
 export default model("Room", RoomSchema);
