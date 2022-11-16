@@ -30,10 +30,6 @@ const HotelSchema = Schema({
         type: String,
         required: true,
     },
-    title: {
-        type: String,
-        required: true,
-    },
     rating: {
         type: Number,
         min: 0,
