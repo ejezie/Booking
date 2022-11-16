@@ -2,7 +2,7 @@ import Room from "../models/Room.js";
 import Hotel from "../models/Hotel.js";
 import { makeError } from "../utils/error.js";
 
-const createRoom = async (req, res, next) => {
+export const createRoom = async (req, res, next) => {
   const hotelId = req.params.hotellId;
   const newRoom = new Room(req.body);
   try {
@@ -18,7 +18,7 @@ const createRoom = async (req, res, next) => {
   }
 };
 
-const updateRoom = async (req, res, next) => {
+export const updateRoom = async (req, res, next) => {
     try{
         const updatedRoom = await Room.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
         res.status(200).json(updateRoom)
@@ -27,7 +27,7 @@ const updateRoom = async (req, res, next) => {
     }
 }
 
-const getRoomById = async (req, res, next) => {
+export const getRoomById = async (req, res, next) => {
     try{
         const room = await Room.findById(req.params.id);
         res.status(200).json(room)
@@ -36,7 +36,7 @@ const getRoomById = async (req, res, next) => {
     }
 }
 
-const getAllRooms = async (req, res, next) => {
+export const getAllRooms = async (req, res, next) => {
     try{
         const rooms = await Room.find()
         res.status(200).json(rooms)
@@ -45,7 +45,7 @@ const getAllRooms = async (req, res, next) => {
     }
 }
 
-const deleteRoom = async (req, res, next) => {
+export const deleteRoom = async (req, res, next) => {
     try{
         await Room.findByIdAndDelete(req.params.id)
         res.status(200).send("Room deleted successfully")
