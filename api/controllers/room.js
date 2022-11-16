@@ -17,3 +17,12 @@ const createRoom = async (req, res, next) => {
     next(err);
   }
 };
+
+const updateRoom = async (req, res, next) => {
+    try{
+        const updatedRoom = await Room.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
+        res.status(200).json(updateRoom)
+    }catch(err){
+        next(err)
+    }
+}
