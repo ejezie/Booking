@@ -12,7 +12,7 @@ router.delete('/:id', verifyAdmin, deleteRoom)
 
 router.put('/:id', verifyAdmin, updateRoom)
 
-router.post('/hotelId', verifyAdmin,createRoom)
+router.post('/:hotelId', verifyAdmin,createRoom)
 
 
 export default router;
