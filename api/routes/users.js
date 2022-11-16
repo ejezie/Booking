@@ -1,6 +1,6 @@
 import express from "express";
 import { createUser, deleteUser, getAllUsers, getUserById, updateUser } from "../controllers/user.js";
-import { verifyToken, verifyUser } from "../utils/verifyToken.js";
+import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router()
 
@@ -19,6 +19,9 @@ router.get("/checkAuth", verifyToken, (req, res, next) => {
 });
 router.get("/checkUser/:id", verifyUser, (req, res, next) => {
     res.send("hello, welcome, you can delete your account!")
+});
+router.get("/checkAdmin/:id", verifyAdmin, (req, res, next) => {
+    res.send("hello, welcome, you are an admin!")
 });
 
 export default router;
