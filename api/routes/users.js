@@ -4,7 +4,7 @@ import { verifyAdmin, verifyToken, verifyUser } from "../utils/verifyToken.js";
 
 const router = express.Router()
 
-router.get('/', getAllUsers)
+router.get('/', verifyAdmin, getAllUsers)
 
 // router.post('/', createUser)
 
