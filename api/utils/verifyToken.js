@@ -18,7 +18,7 @@ export const verifyUser = (req, res, next) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
       next();
     } else {
-      if (err) next(makeError(403, "Invalid Token"));
+      return next(makeError(403, "You are not authorised"));
     }
   });
 };
