@@ -60,7 +60,6 @@ export const deleteRoom = async (req, res, next) => {
     } catch (err) {
       next(err);
     }
-    ß;
     res.status(200).send("Room deleted successfully");
   } catch (err) {
     next(err);
