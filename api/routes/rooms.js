@@ -8,7 +8,7 @@ router.get('/', getAllRooms );
 
 router.get('/:id',getRoomById )
 
-router.delete('/:id', verifyAdmin, deleteRoom)
+router.delete('/:id/:hotelId', verifyAdmin, deleteRoom)
 
 router.put('/:id', verifyAdmin, updateRoom)
 
