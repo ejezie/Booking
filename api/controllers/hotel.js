@@ -39,8 +39,8 @@ export const getAllHotels = async (req, res, next) => {
 
 export const deleteHotel = async (req, res, next) => {
     try{
-        await Hotel.findByIdAndDelete(req.params.id)
-        res.status(200).json("Hotel deleted succesfully")
+        const result = await Hotel.findByIdAndDelete(req.params.id)
+        if (result) ( res.status(200).json("Hotel deleted succesfully") )
     }catch(err){
         next(err)
     }
