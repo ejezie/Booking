@@ -41,6 +41,7 @@ export const deleteHotel = async (req, res, next) => {
     try{
         const result = await Hotel.findByIdAndDelete(req.params.id)
         if (result) ( res.status(200).json("Hotel deleted succesfully") )
+        else res.send("Id not valid")
     }catch(err){
         next(err)
     }
