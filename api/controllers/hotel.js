@@ -46,3 +46,14 @@ export const deleteHotel = async (req, res, next) => {
         next(err)
     }
 }
+
+export const countByCity = async (req, res, next) => {
+    const cities = req.query.cities.split(",");
+    try{
+        cities.map(city => (
+            Hotel.find({city: city}).lenght
+        )) 
+    }catch(err){
+        next(err)
+    }
+}
