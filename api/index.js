@@ -6,6 +6,7 @@ import authRoute from "./routes/auth.js"
 import hotelsRoute from "./routes/hotels.js"
 import roomsRoute from "./routes/rooms.js"
 import usersRoute from "./routes/users.js"
+import cors from "cors"
 
 dotenv.config();
 const app = express();
@@ -32,6 +33,7 @@ app.get("/", (req, res) => {
 app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded())
+app.use(cors())
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
