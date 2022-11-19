@@ -30,7 +30,7 @@ const PropertyList = () => {
                 />
                 <div className="pListTitles">
                   <h1>{data[index].type.charAt(0).toUpperCase() + data[index].type.slice(1) + "s"}</h1>
-                  <h2>{data[index].count} {data[index].type}</h2>
+                  <h2>{data[index].count} {data[index].type + "(s)"}</h2>
                 </div>
               </div>
             ))}
