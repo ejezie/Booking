@@ -48,6 +48,7 @@ export const deleteHotel = async (req, res, next) => {
 }
 
 export const countByCity = async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
     const cities = req.query.cities.split(",");
     try{
         const list = await Promise.all(cities.map(city => (
