@@ -3,7 +3,7 @@ import "./featured.css";
 
 const Featured = () => {
   const { loading, error, data } = useFetch(
-    "/hotels/countByCity?cities=lagos,abuja"
+    "/hotels/countByCity?cities=lagos,abuja,calaba"
   );
 
   console.log(data, "****");
