@@ -22,15 +22,15 @@ const PropertyList = () => {
           {" "}
           {data &&
             images.map((image, index) => (
-              <div className="pListItem">
+              <div className="pListItem" key={index}>
                 <img
                   src={image}
                   alt=""
                   className="pListImg"
                 />
                 <div className="pListTitles">
-                  <h1>{data[index].type.charAt(0).toUpperCase() + data[index].type.slice(1) + "s"}</h1>
-                  <h2>{data[index].count} {data[index].type + "(s)"}</h2>
+                  <h1>{data[index]?.type.charAt(0).toUpperCase() + data[index]?.type.slice(1) + "s"}</h1>
+                  <h2>{data[index]?.count} {data[index]?.type + "(s)"}</h2>
                 </div>
               </div>
             ))}
