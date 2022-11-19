@@ -1,6 +1,11 @@
+import useFetch from "../../hooks/useFetch";
 import "./propertyList.css";
 
 const PropertyList = () => {
+
+  const {loading, error, data} = useFetch("/hotels/countByType")
+  console.log(data, "_____")
+
   return (
     <div className="pList">
       <div className="pListItem">
