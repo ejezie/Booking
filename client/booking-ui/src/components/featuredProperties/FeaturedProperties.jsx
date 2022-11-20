@@ -1,6 +1,10 @@
+import useFetch from "../../hooks/useFetch";
 import "./featuredProperties.css";
 
 const FeaturedProperties = () => {
+
+  const {loading, error , data} = useFetch("")
+
   return (
     <div className="fp">
       <div className="fpItem">
