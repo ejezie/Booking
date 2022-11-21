@@ -27,11 +27,11 @@ const FeaturedProperties = () => {
               <span className="fpCity">{data[index]?.city}</span>
               <span className="fpPrice">
                 Starting from <>&#8358;</>
-                {data[index].cheapestPrice}
+                {data[index]?.cheapestPrice}
               </span>
-              {data[index].rating && (
+              {data[index]?.rating && (
                 <div className="fpRating">
-                  <button>{data[index].rating}/5</button>
+                  <button>{data[index]?.rating}/5</button>
                   <span>Excellent</span>
                 </div>
               )}
