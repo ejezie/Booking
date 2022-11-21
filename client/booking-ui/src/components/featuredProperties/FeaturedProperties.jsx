@@ -23,8 +23,8 @@ const FeaturedProperties = () => {
           <>
             <div className="fpItem">
               <img src={image} alt="property" className="fpImg" />
-              <span className="fpName">{data[index].name}</span>
-              <span className="fpCity">{data[index].city}</span>
+              <span className="fpName">{data[index]?.name}</span>
+              <span className="fpCity">{data[index]?.city}</span>
               <span className="fpPrice">
                 Starting from <>&#8358;</>
                 {data[index].cheapestPrice}
