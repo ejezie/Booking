@@ -9,8 +9,8 @@ const SearchItem = ({item}) => {
         className="siImg"
       />
       <div className="siDesc">
-        <h1 className="siTitle">{item.name}</h1>
-        <span className="siDistance">{item.distance} from center</span>
+        <h1 className="siTitle">{item?.name}</h1>
+        <span className="siDistance">{item?.distance} from center</span>
         <span className="siTaxiOp">Free airport taxi</span>
         <span className="siSubtitle">
           Studio Apartment with Air conditioning
@@ -26,7 +26,7 @@ const SearchItem = ({item}) => {
       <div className="siDetails">
         <div className="siRating">
           <span>Excellent</span>
-          <button>8.9</button>
+          <button>{item?.rating}</button>
         </div>
         <div className="siDetailTexts">
           <span className="siPrice">$112</span>
