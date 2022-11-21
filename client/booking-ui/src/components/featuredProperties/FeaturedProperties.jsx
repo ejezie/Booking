@@ -26,9 +26,9 @@ const FeaturedProperties = () => {
                 alt="property"
                 className="fpImg"
               />
-              <span className="fpName">Aparthotel Stare Miasto</span>
-              <span className="fpCity">Madrid</span>
-              <span className="fpPrice">Starting from $120</span>
+              <span className="fpName">{data[index].name}</span>
+              <span className="fpCity">{data[index].city}</span>
+              <span className="fpPrice">Starting from {data[index].cheapestPrice}</span>
               <div className="fpRating">
                 <button>8.9</button>
                 <span>Excellent</span>
