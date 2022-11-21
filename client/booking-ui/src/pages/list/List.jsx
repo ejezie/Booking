@@ -14,7 +14,9 @@ const List = () => {
   const [date, setDate] = useState(location.state.date);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
-  const {loading, data, error, reFetch} = useFetch(`/hotels/city=${destination}`)
+  const { loading, data, error, reFetch } = useFetch(
+    `/hotels/city=${destination}`
+  );
 
   return (
     <div>
@@ -89,15 +91,7 @@ const List = () => {
             <button>Search</button>
           </div>
           <div className="listResult">
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
-            <SearchItem />
+            {loading ? <div>Loading</div> : data.map((item, i) => <SearchItem />)}
           </div>
         </div>
       </div>
