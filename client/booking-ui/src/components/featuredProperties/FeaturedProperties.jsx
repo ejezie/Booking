@@ -18,21 +18,23 @@ const FeaturedProperties = () => {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        data && images.map((image, index) => (
+        data &&
+        images.map((image, index) => (
           <>
             <div className="fpItem">
-              <img
-                src={image}
-                alt="property"
-                className="fpImg"
-              />
+              <img src={image} alt="property" className="fpImg" />
               <span className="fpName">{data[index].name}</span>
               <span className="fpCity">{data[index].city}</span>
-              <span className="fpPrice">Starting from <>&#8358;</>{data[index].cheapestPrice}</span>
-              <div className="fpRating">
-                <button>{data[index].rating}/5</button>
-                <span>Excellent</span>
-              </div>
+              <span className="fpPrice">
+                Starting from <>&#8358;</>
+                {data[index].cheapestPrice}
+              </span>
+              {data[index].rating && (
+                <div className="fpRating">
+                  <button>{data[index].rating}/5</button>
+                  <span>Excellent</span>
+                </div>
+              )}
             </div>
           </>
         ))
