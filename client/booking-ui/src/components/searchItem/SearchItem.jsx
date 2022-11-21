@@ -1,6 +1,6 @@
 import "./searchItem.css";
 
-const SearchItem = ({item}) => {
+const SearchItem = ({ item }) => {
   return (
     <div className="searchItem">
       <img
@@ -13,7 +13,7 @@ const SearchItem = ({item}) => {
         <span className="siDistance">{item?.distance} from center</span>
         <span className="siTaxiOp">Free airport taxi</span>
         <span className="siSubtitle">
-          Studio Apartment with Air conditioning
+          {item.description || "Apartment with Air conditioning"}
         </span>
         <span className="siFeatures">
           Entire studio • 1 bathroom • 21m² 1 full bed
@@ -24,10 +24,12 @@ const SearchItem = ({item}) => {
         </span>
       </div>
       <div className="siDetails">
-        <div className="siRating">
-          <span>Excellent</span>
-          <button>{item?.rating}</button>
-        </div>
+        {item.rating && (
+          <div className="siRating">
+            <span>Excellent</span>
+            <button>{item?.rating}</button>
+          </div>
+        )}
         <div className="siDetailTexts">
           <span className="siPrice">$112</span>
           <span className="siTaxOp">Includes taxes and fees</span>
