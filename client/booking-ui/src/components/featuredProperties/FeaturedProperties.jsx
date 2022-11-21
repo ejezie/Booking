@@ -28,7 +28,7 @@ const FeaturedProperties = () => {
               />
               <span className="fpName">{data[index].name}</span>
               <span className="fpCity">{data[index].city}</span>
-              <span className="fpPrice">Starting from <>&#8358;</> {data[index].cheapestPrice}</span>
+              <span className="fpPrice">Starting from <>&#8358;</>{data[index].cheapestPrice}</span>
               <div className="fpRating">
                 <button>{data[index].rating}/5</button>
                 <span>Excellent</span>
