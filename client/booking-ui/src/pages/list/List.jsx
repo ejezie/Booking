@@ -22,8 +22,8 @@ const List = () => {
 
   const handleClick = () => {
     reFetch()
-    console.log(max
-      );
+    console.log(max);
+    console.log(min, 'min')
   }
 
   return (
