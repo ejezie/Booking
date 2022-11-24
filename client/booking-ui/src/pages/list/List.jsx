@@ -21,86 +21,108 @@ const List = () => {
   );
 
   const handleClick = () => {
-    reFetch()
-  }
+    reFetch();
+  };
 
   return (
     <div>
       <Navbar />
       <Header type="list" />
-      <div className="listContainer">
-        <div className="listWrapper">
-          <div className="listSearch">
-            <h1 className="lsTitle">Search</h1>
-            <div className="lsItem">
-              <label>Destination</label>
-              <input onChange={e=>setDestination(e.target.value)} placeholder={destination} type="text" />
-            </div>
-            <div className="lsItem">
-              <label>Check-in Date</label>
-              <span onClick={() => setOpenDate(!openDate)}>{`${format(
-                date[0].startDate,
-                "MM/dd/yyyy"
-              )} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
-              {openDate && (
-                <DateRange
-                  onChange={(item) => setDate([item.selection])}
-                  minDate={new Date()}
-                  ranges={date}
+      {loading ? (
+        <div>loading...</div>
+      ) : (
+        <div className="listContainer">
+          <div className="listWrapper">
+            <div className="listSearch">
+              <h1 className="lsTitle">Search</h1>
+              <div className="lsItem">
+                <label>Destination</label>
+                <input
+                  onChange={(e) => setDestination(e.target.value)}
+                  placeholder={destination}
+                  type="text"
                 />
-              )}
-            </div>
-            <div className="lsItem">
-              <label>Options</label>
-              <div className="lsOptions">
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">
-                    Min price <small>per night</small>
-                  </span>
-                  <input onChange={e => setMin(e.target.value)} type="number" className="lsOptionInput" />
-                </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">
-                    Max price <small>per night</small>
-                  </span>
-                  <input onChange={e=>setMax(e.target.value)} type="number" className="lsOptionInput" />
-                </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Adult</span>
-                  <input
-                    type="number"
-                    min={1}
-                    className="lsOptionInput"
-                    placeholder={options.adult}
+              </div>
+              <div className="lsItem">
+                <label>Check-in Date</label>
+                <span onClick={() => setOpenDate(!openDate)}>{`${format(
+                  date[0].startDate,
+                  "MM/dd/yyyy"
+                )} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+                {openDate && (
+                  <DateRange
+                    onChange={(item) => setDate([item.selection])}
+                    minDate={new Date()}
+                    ranges={date}
                   />
-                </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Children</span>
-                  <input
-                    type="number"
-                    min={0}
-                    className="lsOptionInput"
-                    placeholder={options.children}
-                  />
-                </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Room</span>
-                  <input
-                    type="number"
-                    min={1}
-                    className="lsOptionInput"
-                    placeholder={options.room}
-                  />
+                )}
+              </div>
+              <div className="lsItem">
+                <label>Options</label>
+                <div className="lsOptions">
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">
+                      Min price <small>per night</small>
+                    </span>
+                    <input
+                      onChange={(e) => setMin(e.target.value)}
+                      type="number"
+                      className="lsOptionInput"
+                    />
+                  </div>
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">
+                      Max price <small>per night</small>
+                    </span>
+                    <input
+                      onChange={(e) => setMax(e.target.value)}
+                      type="number"
+                      className="lsOptionInput"
+                    />
+                  </div>
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">Adult</span>
+                    <input
+                      type="number"
+                      min={1}
+                      className="lsOptionInput"
+                      placeholder={options.adult}
+                    />
+                  </div>
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">Children</span>
+                    <input
+                      type="number"
+                      min={0}
+                      className="lsOptionInput"
+                      placeholder={options.children}
+                    />
+                  </div>
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">Room</span>
+                    <input
+                      type="number"
+                      min={1}
+                      className="lsOptionInput"
+                      placeholder={options.room}
+                    />
+                  </div>
                 </div>
               </div>
+              <button onClick={handleClick}>Search</button>
             </div>
-            <button onClick={handleClick}>Search</button>
-          </div>
-          <div className="listResult">
-            {loading ? <div>Loading...</div> : data?.map((item, i) => <SearchItem key={item?._id} item={item}/>)}
+            <div className="listResult">
+              {loading ? (
+                <div>Loading...</div>
+              ) : (
+                data?.map((item, i) => (
+                  <SearchItem key={item?._id} item={item} />
+                ))
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
