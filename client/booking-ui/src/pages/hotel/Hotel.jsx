@@ -99,10 +99,10 @@ const Hotel = () => {
             <h1 className="hotelTitle">{data?.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
-              <span>Elton St 125 New york</span>
+              <span>{data.address}</span>
             </div>
             <span className="hotelDistance">
-              Excellent location – 500m from center
+              {data.distance}
             </span>
             <span className="hotelPriceHighlight">
               Book a stay over $114 at this property and get a free airport taxi
