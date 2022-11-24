@@ -105,7 +105,7 @@ const Hotel = () => {
               {data.distance}
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.cheapestPrice} at this property and get a free airport taxi
+              Book a stay over <>&#8358;</>{data.cheapestPrice} at this property and get a free airport taxi
             </span>
             <div className="hotelImages">
               {photos.map((photo, i) => (
@@ -121,7 +121,7 @@ const Hotel = () => {
             </div>
             <div className="hotelDetails">
               <div className="hotelDetailsTexts">
-                <h1 className="hotelTitle">Stay in the heart of City</h1>
+                <h1 className="hotelTitle">{data.name}</h1>
                 <p className="hotelDesc">
                   Located a 5-minute walk from St. Florian's Gate in Krakow,
                   Tower Street Apartments has accommodations with air
