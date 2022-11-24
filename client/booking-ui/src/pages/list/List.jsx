@@ -29,7 +29,7 @@ const List = () => {
       <Navbar />
       <Header type="list" />
       {loading ? (
-        <div>loading...</div>
+        <div style={{width: '100%', height: '60vh', background: 'red'}}>loading...</div>
       ) : (
         <div className="listContainer">
           <div className="listWrapper">
