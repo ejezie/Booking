@@ -19,9 +19,7 @@ const Hotel = () => {
   const [open, setOpen] = useState(false);
 
   const location = useLocation();
-  const id = new Array(location.pathname);
-  const b = id.split("/")
-  console.log(id);
+  const id = location.pathname.split("/")[2]
   const {data, error, loading} = useFetch(`/hotels/`)
 
   const photos = [
