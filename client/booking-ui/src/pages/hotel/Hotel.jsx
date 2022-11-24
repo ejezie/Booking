@@ -134,7 +134,7 @@ const Hotel = () => {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>$945</b> (9 nights)
+                  <b><>&#8358;</>{data.cheapestPrice} </b> (9 nights)
                 </h2>
                 <button>Reserve or Book Now!</button>
               </div>
