@@ -11,10 +11,13 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import useFetch from "../../hooks/useFetch";
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+
+  const {data, error, loading} = useFetch("/hotels/")
 
   const photos = [
     {
