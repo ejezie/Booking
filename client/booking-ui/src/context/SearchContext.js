@@ -1,3 +1,5 @@
+import { createContext } from "react";
+
 const INITIAL_STATE = {
   city: undefined,
   date: [],
@@ -7,3 +9,5 @@ const INITIAL_STATE = {
     room: undefined,
   },
 };
+
+export const SearchContext = createContext(INITIAL_STATE);
