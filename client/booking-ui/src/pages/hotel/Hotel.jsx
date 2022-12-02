@@ -13,6 +13,8 @@ import {
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { SearchContext } from "../../context/SearchContext";
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
@@ -59,6 +61,8 @@ const Hotel = () => {
 
     setSlideNumber(newSlideNumber);
   };
+
+  const {dates} = useContext(SearchContext);
 
   return (
     <div>
