@@ -75,7 +75,7 @@ const Hotel = () => {
     return dayDiff;
   }
 
-  console.log(getDayDiff(dates[0].startDate, dates[0].endDate))
+  const days = (getDayDiff(dates[0].startDate, dates[0].endDate))
 
   return (
     <div>
@@ -144,7 +144,7 @@ const Hotel = () => {
                 </p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a 9-night stay!</h1>
+                <h1>Perfect for a {days}-night stay!</h1>
                 <span>
                   Located in the real heart of Krakow, this property has an
                   excellent location score of 9.8!
@@ -154,7 +154,8 @@ const Hotel = () => {
                     <>&#8358;</>
                     {data.cheapestPrice}{" "}
                   </b>{" "}
-                  (9 nights)
+                  {days}
+                  (nights)
                 </h2>
                 <button>Reserve or Book Now!</button>
               </div>
