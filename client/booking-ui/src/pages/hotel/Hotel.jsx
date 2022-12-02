@@ -63,6 +63,7 @@ const Hotel = () => {
   };
 
   const {dates} = useContext(SearchContext);
+  console.log(dates);
 
   return (
     <div>
