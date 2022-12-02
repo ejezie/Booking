@@ -62,8 +62,18 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber);
   };
 
-  const {dates} = useContext(SearchContext);
+  const { dates } = useContext(SearchContext);
   console.log(dates);
+
+  const milSecPerDay = 1000 * 60 * 60 * 24;
+
+  function getDayDiff(seconDate, firstDate){
+    // In milli seconds
+    const calcTimeDiff = Math.abs(seconDate.getTime() - firstDate.getTime());
+    // get per 24hr day
+    const dayDiff = Math.abs(calcTimeDiff / milSecPerDay);
+    return dayDiff;
+  }
 
   return (
     <div>
@@ -106,11 +116,10 @@ const Hotel = () => {
               <FontAwesomeIcon icon={faLocationDot} />
               <span>{data.address}</span>
             </div>
-            <span className="hotelDistance">
-              {data.distance}
-            </span>
+            <span className="hotelDistance">{data.distance}</span>
             <span className="hotelPriceHighlight">
-              Book a stay over <>&#8358;</>{data.cheapestPrice} at this property and get a free airport taxi
+              Book a stay over <>&#8358;</>
+              {data.cheapestPrice} at this property and get a free airport taxi
             </span>
             <div className="hotelImages">
               {photos.map((photo, i) => (
@@ -139,7 +148,11 @@ const Hotel = () => {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b><>&#8358;</>{data.cheapestPrice} </b> (9 nights)
+                  <b>
+                    <>&#8358;</>
+                    {data.cheapestPrice}{" "}
+                  </b>{" "}
+                  (9 nights)
                 </h2>
                 <button>Reserve or Book Now!</button>
               </div>
