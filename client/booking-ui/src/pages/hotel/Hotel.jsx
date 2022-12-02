@@ -75,6 +75,8 @@ const Hotel = () => {
     return dayDiff;
   }
 
+  console.log(getDayDiff(dates[0].startDate, dates[0].endDate))
+
   return (
     <div>
       <Navbar />
