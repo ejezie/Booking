@@ -13,14 +13,34 @@ const INITIAL_STATE = {
 export const AuthContext = createContext(INITIAL_STATE);
 
 const authReducer = (state, action) => {
-    switch(action.type){
-        case "NEW_SEARCH":
-          return action.payload
-        case "RESET_SEARCH":
-          return INITIAL_STATE;
-        default: 
-          return state;
-    }
+    switch (action.type) {
+    case "LOGIN_START":
+      return {
+        user: null,
+        loading: true,
+        error: null,
+      };
+    case "LOGIN_SUCCESS":
+      return {
+        user: action.payload,
+        loading: false,
+        error: null,
+      };
+    case "LOGIN_FAIL":
+      return {
+        user: null,
+        loading: false,
+        error: action.payload,
+      };
+    case "LOGOUT":
+      return {
+        user: null,
+        loading: null,
+        error: null,
+      };
+    default:
+      return state;
+  }
 }
 
 export const AuthContextProvider = ({children}) => {
