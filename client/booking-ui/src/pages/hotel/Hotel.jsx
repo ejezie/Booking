@@ -121,7 +121,7 @@ const Hotel = () => {
             <span className="hotelDistance">{data.distance}</span>
             <span className="hotelPriceHighlight">
               Book a stay over <>&#8358;</>
-              {data.cheapestPrice} at this property and get a free airport taxi
+              {data.cheapestPrice} at this property and get free breakfast for the duration of your stay
             </span>
             <div className="hotelImages">
               {photos.map((photo, i) => (
@@ -152,7 +152,7 @@ const Hotel = () => {
                 <h2>
                   <b>
                     <>&#8358;</>
-                    {data.cheapestPrice}{" "}
+                    {data.cheapestPrice * days}{" "}
                   </b>{" "}
                   {days}
                   {" "}
