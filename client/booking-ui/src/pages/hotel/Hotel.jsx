@@ -155,6 +155,7 @@ const Hotel = () => {
                     {data.cheapestPrice}{" "}
                   </b>{" "}
                   {days}
+                  {" "}
                   (nights)
                 </h2>
                 <button>Reserve or Book Now!</button>
