@@ -7,6 +7,8 @@ import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import { useContext } from "react";
+import { SearchContext } from "../../context/SearchContext";
 
 const List = () => {
   const location = useLocation();
@@ -20,8 +22,10 @@ const List = () => {
     `/hotels?city=${city}&min=${min || 0}&max=${max || 200000}`
   );
 
+  const [dispatch] = useContext(SearchContext)
   const handleClick = () => {
     reFetch();
+    dispatch({type: "NEW_SEARCH", payload: {city, dates, options}})
   };
 
   return (
