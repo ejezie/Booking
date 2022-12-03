@@ -1,23 +1,21 @@
 import { createContext, useReducer } from "react";
 
 const INITIAL_STATE = {
-  city: undefined,
-  dates: [],
-  options: {
-    adult: undefined,
-    children: undefined,
-    room: undefined,
-  },
+  user: null,
+  loading: false,
+  error: null,
 };
 
 export const SearchContext = createContext(INITIAL_STATE);
 
 const searchReducer = (state, action) => {
     switch(action.type){
-        case "NEW_SEARCH":
-          return action.payload
-        case "RESET_SEARCH":
-          return INITIAL_STATE;
+        case "LOGIN_START":
+            return {
+                user: null,
+                loading: true,
+                error: null,
+            }
         default: 
           return state;
     }
