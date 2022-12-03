@@ -63,7 +63,7 @@ const Hotel = () => {
   };
 
   const { dates, options, city } = useContext(SearchContext);
-  console.log(city);
+  console.log(options.room);
 
   const milSecPerDay = 1000 * 60 * 60 * 24;
 
@@ -72,6 +72,8 @@ const Hotel = () => {
     const calcTimeDiff = Math.abs(seconDate.getTime() - firstDate.getTime());
     // get per 24hr day
     const dayDiff = Math.abs(calcTimeDiff / milSecPerDay);
+    // return dayDiff;
+    if (dayDiff === 0) return 1;
     return dayDiff;
   }
 
