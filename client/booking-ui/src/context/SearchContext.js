@@ -9,24 +9,43 @@ const INITIAL_STATE = {
 export const SearchContext = createContext(INITIAL_STATE);
 
 const searchReducer = (state, action) => {
-    switch(action.type){
-        case "LOGIN_START":
-            return {
-                user: null,
-                loading: true,
-                error: null,
-            }
-        default: 
-          return state;
-    }
-}
+  switch (action.type) {
+    case "LOGIN_START":
+      return {
+        user: null,
+        loading: true,
+        error: null,
+      };
+    case "LOGIN_SUCCESS":
+      return {
+        user: action.payload,
+        loading: false,
+        error: null,
+      };
+    case "LOGIN_FAIL":
+      return {
+        user: null,
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
-export const SearchContextProvider = ({children}) => {
+export const SearchContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(searchReducer, INITIAL_STATE);
 
-    return(
-      <SearchContext.Provider value={{city: state.city, dates: state.dates, options: state.options, dispatch}}>
-        {children}
-      </SearchContext.Provider>
-    )
-}
+  return (
+    <SearchContext.Provider
+      value={{
+        city: state.city,
+        dates: state.dates,
+        options: state.options,
+        dispatch,
+      }}
+    >
+      {children}
+    </SearchContext.Provider>
+  );
+};
