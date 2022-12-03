@@ -62,8 +62,8 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber);
   };
 
-  const { dates } = useContext(SearchContext);
-  console.log(dates);
+  const { dates, options, city } = useContext(SearchContext);
+  console.log(city);
 
   const milSecPerDay = 1000 * 60 * 60 * 24;
 
@@ -146,13 +146,13 @@ const Hotel = () => {
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>
                 <span>
-                  Located in the real heart of Krakow, this property has an
+                  Located in the real heart of {city || "Nigeria"}, this property has an
                   excellent location score of 9.8!
                 </span>
                 <h2>
                   <b>
                     <>&#8358;</>
-                    {data.cheapestPrice * days}{" "}
+                    {data.cheapestPrice * days * options.room}{" "}
                   </b>{" "}
                   {days}
                   {" "}

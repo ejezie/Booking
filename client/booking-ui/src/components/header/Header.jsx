@@ -18,7 +18,7 @@ import { useContext } from "react";
 import { SearchContext } from "../../context/SearchContext";
 
 const Header = ({ type }) => {
-  const [destination, setDestination] = useState("");
+  const [city, setCity] = useState("");
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState([
     {
@@ -48,8 +48,8 @@ const Header = ({ type }) => {
   const {dispatch} = useContext(SearchContext);
 
   const handleSearch = () => {
-    dispatch({type: "NEW_SEARCH", payload: {destination, dates, options}})
-    navigate("/hotels", { state: { destination, dates, options } });
+    dispatch({type: "NEW_SEARCH", payload: {city, dates, options}})
+    navigate("/hotels", { state: { city, dates, options } });
   };
 
   return (
@@ -98,7 +98,7 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="Where are you going?"
                   className="headerSearchInput"
-                  onChange={(e) => setDestination(e.target.value)}
+                  onChange={(e) => setCity(e.target.value)}
                 />
               </div>
               <div className="headerSearchItem">
