@@ -13,13 +13,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -50,6 +52,18 @@ const Hotel = () => {
     setSlideNumber(i);
     setOpen(true);
   };
+
+  const navigate = useNavigate()
+
+  const {user} = useContext(AuthContext)
+
+  const handleClick = () => {
+    if(user){
+
+    }else{
+      navigate("/");
+    }
+  }
 
   const handleMove = (direction) => {
     let newSlideNumber;
@@ -172,7 +186,7 @@ const Hotel = () => {
                   {" "}
                   (nights)
                 </h2>
-                <button>Reserve or Book Now!</button>
+                <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
