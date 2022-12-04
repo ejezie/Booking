@@ -5,12 +5,7 @@ import "./button.css";
 function Button({ loading, title, className = "lButton" }) {
   return (
     <button
-      className={className}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+      className={`${className} center`}
     >
       {loading ? (
         <TailSpin

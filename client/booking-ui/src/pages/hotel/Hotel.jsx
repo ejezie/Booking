@@ -4,6 +4,7 @@ import Header from "../../components/header/Header";
 import MailList from "../../components/mailList/MailList";
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TailSpin } from "react-loader-spinner";
 import {
   faCircleArrowLeft,
   faCircleArrowRight,
@@ -84,7 +85,18 @@ const Hotel = () => {
       <Navbar />
       <Header type="list" />
       {loading ? (
-        <div>loading...</div>
+        <div className="center" style={{height: "100vh", width: "100vw"}}>
+          <TailSpin
+          height="20"
+          width="20"
+          color="#4fa94d"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+        </div>
       ) : (
         <div className="hotelContainer">
           {open && (

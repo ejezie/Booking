@@ -31,14 +31,14 @@ function Login() {
   }
 
   const {user, loading, error, dispatch} = useContext(AuthContext)
-  console.log(user)
+  console.log(user, error)
 
   return <div className="login">
     <div className="lContainer">
         <h1>Welcome, please login</h1>
-        <input placeholder="user name" id="username" type={"text"} onChange={handleChange} className="lInput"/>
+        <input placeholder="username" id="username" type={"text"} onChange={handleChange} className="lInput"/>
         <input placeholder="password" id="password" type={"password"} onChange={handleChange} className="lInput"/>
-        <Button className="lButton" onClick={handleClick} title="login" loading={loading}/>
+        <Button className="lButton" onClick={handleClick} title="Login" loading={loading}/>
         {error && <span className="error">{error.message}</span>}
     </div>
   </div>;
