@@ -5,13 +5,13 @@ import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
 function Login() {
-  const [credentials, setCredential] = useState({
+  const [credentials, setCredentials] = useState({
     username: undefined,
     password: undefined,
   });
 
   const handleChange = (e) => {
-    setCredential((prev) => ({...prev, [e.target.id]: e.target.value }));
+    setCredentials((prev) => ({...prev, [e.target.id]: e.target.value }));
   }
   const handleClick = async (e) => {
     e.preventDefault()
@@ -25,12 +25,12 @@ function Login() {
   }
 
   const {user, loading, error, dispatch} = useContext(AuthContext)
-  console.log(user)
+  console.log(credentials.username, "****", credentials.password)
 
   return <div className="login">
     <div className="loginWrap">
         <input placeholder="user name" id="username" type={"text"} onChange={handleChange} className="loginInput"/>
-        <input placeholder="user name" id="password " type={"password"} onChange={handleChange} className="login Input"/>
+        <input placeholder="password" id="password" type={"password"} onChange={handleChange} className="loginInput"/>
         <button className="loginBut" onClick={handleClick}>Login</button>
         {error && <span className="error">{error.message}</span>}
     </div>
