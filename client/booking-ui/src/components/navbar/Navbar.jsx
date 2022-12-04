@@ -13,7 +13,7 @@ const Navbar = () => {
         <Link to={"/"} style={{color: 'white', textDecoration: 'none'}}>
           <span className="logo">BookNow</span>
         </Link>
-       {!user && <div className="navItems">
+       {user ? <div>logout {user.others.username}</div> : <div className="navItems">
           <button className="navButton">Register</button>
           <button className="navButton">Login</button>
         </div>}
