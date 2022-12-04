@@ -17,12 +17,13 @@ function Login() {
   }
 
   const {loading, error, dispatch} = useContext(AuthContext)
+
   return <div className="login">
     <div className="loginWrap">
         <input placeholder="user name" id="username" type={"text"} onChange={handleChange} className="loginInput"/>
         <input placeholder="user name" id="password " type={"password"} onChange={handleChange} className="login Input"/>
         <button className="loginBut" onClick={handleClick}>Login</button>
-        {error && <span>{error.message}</span>}
+        {error && <span className="error">{error.message}</span>}
     </div>
   </div>;
 }
