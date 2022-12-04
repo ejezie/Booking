@@ -12,8 +12,14 @@ function Login() {
   const handleChange = (e) => {
     setCredential((prev) => ({...prev, [e.target.id]: e.target.value }));
   }
-  const handleClick = () => {
+  const handleClick = async (e) => {
+    e.preventDefault()
+    dispatch({tyoe: "LOGIN_START"})
+    try{
 
+    }catch(err){
+        dispatch({type: "LOGIN_FAIL", payload: err.response.data})
+    }
   }
 
   const {loading, error, dispatch} = useContext(AuthContext)
