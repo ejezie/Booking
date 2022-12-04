@@ -2,10 +2,11 @@ import React from "react";
 import { TailSpin } from "react-loader-spinner";
 import "./button.css";
 
-function Button({ loading, title, className = "lButton" }) {
+function Button({ loading, title, className = "lButton", onClick }) {
   return (
     <button
       className={`${className} center`}
+      onClick={onClick}
     >
       {loading ? (
         <TailSpin

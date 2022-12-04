@@ -18,9 +18,12 @@ function Login() {
     setCredentials((prev) => ({...prev, [e.target.id]: e.target.value }));
   }
 
+  const {user, loading, error, dispatch} = useContext(AuthContext)
+
   const handleClick = async (e) => {
     e.preventDefault()
     dispatch({type: "LOGIN_START"})
+    console.log("clicked")
     try{
         const res = await axios.post('auth/login', credentials)
         dispatch({type: "LOGIN_SUCCESS", payload: res.data})
@@ -30,8 +33,7 @@ function Login() {
     }
   }
 
-  const {user, loading, error, dispatch} = useContext(AuthContext)
-  console.log(user, error)
+  console.log(user, credentials.username, credentials.password, loading)
 
   return <div className="login">
     <div className="lContainer">
