@@ -18,12 +18,14 @@ function Login() {
     dispatch({tyoe: "LOGIN_START"})
     try{
         const res = await axios.post('auth/login', credentials)
+        dispatch({type: "LOGIN_SUCCESS", payload: res.data})
     }catch(err){
         dispatch({type: "LOGIN_FAIL", payload: err.response.data})
     }
   }
 
-  const {loading, error, dispatch} = useContext(AuthContext)
+  const {user, loading, error, dispatch} = useContext(AuthContext)
+  console.log(user)
 
   return <div className="login">
     <div className="loginWrap">
