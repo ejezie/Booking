@@ -9,8 +9,8 @@ function Login() {
     password: undefined,
   });
 
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setCredential((prev) => ({...prev, [e.target.id]: e.target.value }));
   }
   const handleClick = () => {
 
@@ -22,6 +22,7 @@ function Login() {
         <input placeholder="user name" id="username" type={"text"} onChange={handleChange} className="loginInput"/>
         <input placeholder="user name" id="password " type={"password"} onChange={handleChange} className="login Input"/>
         <button className="loginBut" onClick={handleClick}>Login</button>
+        {error && <span>{error.message}</span>}
     </div>
   </div>;
 }
