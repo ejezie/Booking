@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/premitives/Button/Button";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
@@ -10,30 +12,32 @@ function Login() {
     password: undefined,
   });
 
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     setCredentials((prev) => ({...prev, [e.target.id]: e.target.value }));
   }
+
   const handleClick = async (e) => {
     e.preventDefault()
     dispatch({tyoe: "LOGIN_START"})
     try{
         const res = await axios.post('auth/login', credentials)
         dispatch({type: "LOGIN_SUCCESS", payload: res.data})
-
+        navigate("/")
     }catch(err){
         dispatch({type: "LOGIN_FAIL", payload: err.response.data})
     }
   }
 
   const {user, loading, error, dispatch} = useContext(AuthContext)
-  console.log(user, "****", credentials.password)
 
   return <div className="login">
     <div className="lContainer">
         <h1>Welcome, please login</h1>
         <input placeholder="user name" id="username" type={"text"} onChange={handleChange} className="lInput"/>
         <input placeholder="password" id="password" type={"password"} onChange={handleChange} className="lInput"/>
-        <button className="lButton" onClick={handleClick}>Login</button>
+        <Button className="lButton" onClick={handleClick} title="login" loading={loading}/>
         {error && <span className="error">{error.message}</span>}
     </div>
   </div>;
