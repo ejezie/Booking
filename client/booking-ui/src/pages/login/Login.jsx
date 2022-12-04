@@ -29,10 +29,11 @@ function Login() {
   console.log(user, "****", credentials.password)
 
   return <div className="login">
-    <div className="loginWrap">
-        <input placeholder="user name" id="username" type={"text"} onChange={handleChange} className="loginInput"/>
-        <input placeholder="password" id="password" type={"password"} onChange={handleChange} className="loginInput"/>
-        <button className="loginBut" onClick={handleClick}>Login</button>
+    <div className="lContainer">
+        <h1>Welcome, please login</h1>
+        <input placeholder="user name" id="username" type={"text"} onChange={handleChange} className="lInput"/>
+        <input placeholder="password" id="password" type={"password"} onChange={handleChange} className="lInput"/>
+        <button className="lButton" onClick={handleClick}>Login</button>
         {error && <span className="error">{error.message}</span>}
     </div>
   </div>;
