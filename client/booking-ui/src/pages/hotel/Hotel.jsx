@@ -61,7 +61,7 @@ const Hotel = () => {
   const  handleClick = () => {
     console.log("clicked")
     if(user){
-      setOpenModal(!openModal)
+      setOpenModal(true)
     }else{
       navigate("/login");
     }
