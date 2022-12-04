@@ -17,6 +17,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
@@ -57,11 +58,12 @@ const Hotel = () => {
 
   const {user} = useContext(AuthContext)
 
-  const handleClick = () => {
+  const  handleClick = () => {
+    console.log("clicked")
     if(user){
-
+      setOpenModal(!openModal)
     }else{
-      navigate("/");
+      navigate("/login");
     }
   }
 
@@ -78,7 +80,6 @@ const Hotel = () => {
   };
 
   const { dates, options, city } = useContext(SearchContext);
-  console.log(options.room);
 
   const milSecPerDay = 1000 * 60 * 60 * 24;
 
@@ -140,7 +141,7 @@ const Hotel = () => {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button className="bookNow" onClick={handleClick}>Reserve or Book Now!</button>
             <h1 className="hotelTitle">{data?.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -194,6 +195,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
+      {openModal && <Reserve setOpen={setOpen} hotelId={id}/>}
     </div>
   );
 };
