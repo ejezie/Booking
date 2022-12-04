@@ -1,14 +1,21 @@
 import React from "react";
 import { TailSpin } from "react-loader-spinner";
-import "./button.css"
+import "./button.css";
 
-function Button({ loading, title, className="lButton" }) {
+function Button({ loading, title, className = "lButton" }) {
   return (
-    <button className={className}>
+    <button
+      className={className}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       {loading ? (
         <TailSpin
-          height="80"
-          width="80"
+          height="20"
+          width="20"
           color="#4fa94d"
           ariaLabel="tail-spin-loading"
           radius="1"

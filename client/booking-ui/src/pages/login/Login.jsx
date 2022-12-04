@@ -20,7 +20,7 @@ function Login() {
 
   const handleClick = async (e) => {
     e.preventDefault()
-    dispatch({tyoe: "LOGIN_START"})
+    dispatch({type: "LOGIN_START"})
     try{
         const res = await axios.post('auth/login', credentials)
         dispatch({type: "LOGIN_SUCCESS", payload: res.data})
@@ -31,6 +31,7 @@ function Login() {
   }
 
   const {user, loading, error, dispatch} = useContext(AuthContext)
+  console.log(user)
 
   return <div className="login">
     <div className="lContainer">
