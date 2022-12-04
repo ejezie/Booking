@@ -3,32 +3,32 @@ import axios from "axios";
 
 const useFetch = (url) => {
   const [data, setData] = useState([]);
-  const [loading, setLoadiing] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoadiing(true);
+      setLoading(true);
       try {
         const res = await axios.get("http://localhost:8800/api" + url);
         setData(res.data);
       } catch (err) {
         setError(err);
       }
-      setLoadiing(false);
+      setLoading(false);
     };
     fetchData();
   }, [url]);
 
   const reFetch = async () => {
-    setLoadiing(true);
+    setLoading(true);
     try {
       const res = await axios.get("http://localhost:8800/api" + url);
       data && setData(res.data);
     } catch (err) {
       setError(err);
     }
-    setLoadiing(false);
+    setLoading(false);
   };
 
   return { data, loading, error, reFetch}

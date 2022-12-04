@@ -15,6 +15,7 @@ function Reserve({setOpen, hotelId }) {
     }
 
     const {data, loading, error} = useFetch(`/hotels/room/${hotelId}`)
+    console.log(hotelId)
     const handleClick = () => {
         return{}
     }
