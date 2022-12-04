@@ -9,11 +9,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Reserve({setOpen, hotelId }) {
-    const data = [];
 
     const handleSelect = () => {
         return{}
     }
+
+    const {data, loading, error} = useFetch(`/hotels/room/${hotelId}`)
     const handleClick = () => {
         return{}
     }
