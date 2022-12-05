@@ -1,5 +1,5 @@
-import React from 'react'
-import "./reserve.css"
+import React from "react";
+import "./reserve.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch";
@@ -8,19 +8,31 @@ import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Reserve({setOpen, hotelId }) {
+function Reserve({ setOpen, hotelId }) {
+  const handleSelect = () => {
+    return {};
+  };
 
-    const handleSelect = () => {
-        return{}
-    }
+  const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
 
-    const {data, loading, error} = useFetch(`/hotels/room/${hotelId}`)
-    console.log(hotelId)
-    const handleClick = () => {
-        return{}
-    }
-    const isAvailable = false;
-    return (
+  const roomData = Promise.all(
+    data.map((item) => {
+      try {
+        const dat = axios.get(`localhost:8800/api/rooms/${item}`);
+        return dat
+      } catch (err) {
+        console.log(err);
+      }
+    })
+  ) || [];
+
+  console.log(roomData);
+
+  const handleClick = () => {
+    return {};
+  };
+  const isAvailable = false;
+  return (
     <div className="reserve">
       <div className="rContainer">
         <FontAwesomeIcon
@@ -62,4 +74,4 @@ function Reserve({setOpen, hotelId }) {
   );
 }
 
-export default Reserve
+export default Reserve;
