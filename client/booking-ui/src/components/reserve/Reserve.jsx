@@ -18,13 +18,13 @@ function Reserve({ setOpen, hotelId }) {
   const roomData = Promise.all(
     data.map((item) => {
       try {
-        const dat = axios.get(`localhost:8800/api/rooms/${item}`);
+        const dat = axios.get(`http://localhost:8800/api/rooms/${item}`);
         return dat
       } catch (err) {
         console.log(err);
       }
     })
-  ) || [];
+  ) || {title: "yellow"};
 
   console.log(roomData);
 
