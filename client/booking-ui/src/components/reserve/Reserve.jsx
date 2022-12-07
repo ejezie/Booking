@@ -19,7 +19,6 @@ function Reserve({ setOpen, hotelId }) {
     data.map((item) => {
       try {
         const dat = axios.get(`http://localhost:8800/api/rooms/${item}`);
-        return dat
       } catch (err) {
         console.log(err);
       }
