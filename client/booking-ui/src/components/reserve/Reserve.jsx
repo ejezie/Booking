@@ -19,13 +19,14 @@ function Reserve({ setOpen, hotelId }) {
     data.map((item) => {
       try {
         const dat = axios.get(`http://localhost:8800/api/rooms/${item}`);
+        return dat;
       } catch (err) {
         console.log(err);
       }
     })
-  ) || {title: "yellow"};
+  ) || { title: "yellow" };
 
-  console.log(roomData);
+  console.log(roomData, "*******");
 
   const handleClick = () => {
     return {};
@@ -39,7 +40,12 @@ function Reserve({ setOpen, hotelId }) {
           className="rClose"
           onClick={() => setOpen(false)}
         />
-        <span>Select your rooms:</span>
+        {data.length < 1 ? (
+          <div>No rooms available at the moment</div>
+        ) : (
+          <span>Select your rooms:</span>
+        )}
+
         {data?.map((item) => (
           <div className="rItem" key={item._id}>
             <div className="rItemInfo">
@@ -65,9 +71,11 @@ function Reserve({ setOpen, hotelId }) {
             </div>
           </div>
         ))}
-        <button onClick={handleClick} className="rButton">
-          Reserve Now!
-        </button>
+        {data > 1 && (
+          <button onClick={handleClick} className="rButton">
+            Reserve Now!
+          </button>
+        )}
       </div>
     </div>
   );
