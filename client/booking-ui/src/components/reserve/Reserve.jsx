@@ -15,9 +15,9 @@ function Reserve({ setOpen, hotelId }) {
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
 
-  var value = null;
+  let roomData = []
 
-  const promiseData = Promise.all(
+  Promise.all(
     data.map((item) => {
       try {
         const dat = axios
@@ -29,14 +29,14 @@ function Reserve({ setOpen, hotelId }) {
       }
     })
   ).then((result) => {
-    value = result;
-  });
+    roomData.push(result);
+  }).catch((err)=> (err))
 
-  const roomData = async () => {
-    return await promiseData?.then((data) => { return JSON.parse(data, null, 2)});
-  };
+  // const roomData = async () => {
+  //   return await promiseData?.then((data) => { return JSON.parse(data, null, 2)});
+  // };
 
-  console.log(value, "roomDta");
+  console.log(roomData, "roomDta");
 
 
   const handleClick = () => {
@@ -51,7 +51,7 @@ function Reserve({ setOpen, hotelId }) {
           className="rClose"
           onClick={() => setOpen(false)}
         />
-        {roomData.length < 1 ? (
+        {roomData?.length < 1 ? (
           <div>No rooms available at the moment</div>
         ) : (
           <span>Select your rooms:</span>
@@ -82,7 +82,7 @@ function Reserve({ setOpen, hotelId }) {
             </div>
           </div>
         ))} */}
-        {roomData > 1 && (
+        {roomData.length > 1 && (
           <button onClick={handleClick} className="rButton">
             Reserve Now!
           </button>
