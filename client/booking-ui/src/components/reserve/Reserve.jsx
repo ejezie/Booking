@@ -15,29 +15,29 @@ function Reserve({ setOpen, hotelId }) {
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
 
+  var value = null;
+
   const promiseData = Promise.all(
     data.map((item) => {
       try {
         const dat = axios
           .get(`http://localhost:8800/api/rooms/${item}`)
-          .then((data) => {
-            return JSON.stringify(data, null, 2);
-          });
         return dat;
       } catch (err) {
         console.log(err);
         throw err;
       }
     })
-  );
+  ).then((result) => {
+    value = result;
+  });
 
-  promiseData?.then((data) =>
-    console.log(JSON.parse(data, null, 2), "ROOMDATA")
-  );
   const roomData = async () => {
     return await promiseData?.then((data) => { return JSON.parse(data, null, 2)});
   };
-  console.log(roomData(), "roomDta");
+
+  console.log(value, "roomDta");
+
 
   const handleClick = () => {
     return {};
