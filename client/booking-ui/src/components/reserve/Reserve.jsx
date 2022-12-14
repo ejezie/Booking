@@ -50,24 +50,24 @@ function Reserve({ setOpen, hotelId }) {
           className="rClose"
           onClick={() => setOpen(false)}
         />
-        {roomData?.length < 1 ? (
+        {roomData.length < 1 ? (
           <div>No rooms available at the moment</div>
         ) : (
           <span>Select your rooms:</span>
         )}
 
-        {roomData?.map((item) => (
-          <div className="rItem" key={item._id}>
-            <div className="rItemInfo">
-              <div className="rTitle">{item.title}</div>
-              <div className="rDesc">{item.desc}</div>
+        {roomData &&
+          <div className="rItem" key={roomData._id}>
+            <div className="rroomDataInfo">
+              <div className="rTitle">{roomData.title}</div>
+              <div className="rDesc">{roomData.desc}</div>
               <div className="rMax">
-                Max people: <b>{item.maxPeople}</b>
+                Max people: <b>{roomData.maxPeople}</b>
               </div>
-              <div className="rPrice">{item.price}</div>
+              <div className="rPrice">{roomData.price}</div>
             </div>
             <div className="rSelectRooms">
-              {item.roomNumbers.map((roomNumber) => (
+              {/* {roomData.roomNumbers.map((roomNumber) => (
                 <div className="room">
                   <label>{roomNumber.number}</label>
                   <input
@@ -77,10 +77,10 @@ function Reserve({ setOpen, hotelId }) {
                     disabled={!isAvailable(roomNumber)}
                   />
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
-        ))}
+        }
         {roomData > 1 && (
           <button onClick={handleClick} className="rButton">
             Reserve Now!
