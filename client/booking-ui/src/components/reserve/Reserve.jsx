@@ -7,37 +7,36 @@ import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Reserve({ setOpen, hotelId }) {
+  const [roomData, setRommData] = React.useState([]);
   const handleSelect = () => {
     return {};
   };
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
 
-  let roomData = []
+  useEffect(() => {
+    const dat = axios
+      .get(`http://localhost:8800/api/rooms/${data[0]}`)
+      .then((response) => setRommData(response.data));
+  }, [data]);
 
-  Promise.all(
-    data.map((item) => {
-      try {
-        const dat = axios
-          .get(`http://localhost:8800/api/rooms/${item}`)
-        return dat;
-      } catch (err) {
-        console.log(err);
-        throw err;
-      }
-    })
-  ).then((result) => {
-    roomData.push(result);
-  }).catch((err)=> (err))
-
+  // useEffect(() => {
+  //   Promise.all(
+  //     data.map((item) => {
+  //         const dat = axios.get(`http://localhost:8800/api/rooms/${item}`);
+  //         console.log(dat, "Promise")
+  //     })
+  //   ).then((data) => setRommData(data)).catch((err) => console.log(err))
+  //   console.log("1")
+  // }, [setOpen]);
   // const roomData = async () => {
   //   return await promiseData?.then((data) => { return JSON.parse(data, null, 2)});
   // };
 
-  console.log(roomData, "roomDta");
-
+  console.log(roomData, "roomData");
 
   const handleClick = () => {
     return {};
@@ -57,7 +56,7 @@ function Reserve({ setOpen, hotelId }) {
           <span>Select your rooms:</span>
         )}
 
-        {/* {roomData?.map((item) => (
+        {roomData?.map((item) => (
           <div className="rItem" key={item._id}>
             <div className="rItemInfo">
               <div className="rTitle">{item.title}</div>
@@ -81,8 +80,8 @@ function Reserve({ setOpen, hotelId }) {
               ))}
             </div>
           </div>
-        ))} */}
-        {roomData.length > 1 && (
+        ))}
+        {roomData > 1 && (
           <button onClick={handleClick} className="rButton">
             Reserve Now!
           </button>
