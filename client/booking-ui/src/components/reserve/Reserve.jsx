@@ -67,7 +67,7 @@ function Reserve({ setOpen, hotelId }) {
               <div className="rPrice">{roomData.price}</div>
             </div>
             <div className="rSelectRooms">
-              {/* {roomData.roomNumbers.map((roomNumber) => (
+              {roomData?.roomNumbers?.map((roomNumber) => (
                 <div className="room">
                   <label>{roomNumber.number}</label>
                   <input
@@ -77,7 +77,7 @@ function Reserve({ setOpen, hotelId }) {
                     disabled={!isAvailable(roomNumber)}
                   />
                 </div>
-              ))} */}
+              ))}
             </div>
           </div>
         }
