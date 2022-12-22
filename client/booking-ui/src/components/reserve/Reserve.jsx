@@ -66,31 +66,32 @@ function Reserve({ setOpen, hotelId }) {
           <span>Select your rooms:</span>
         )}
 
-        {roomData && (
-          <div className="rItem" key={roomData._id}>
-            <div className="rroomDataInfo">
-              <div className="rTitle">{roomData.title}</div>
-              <div className="rDesc">{roomData.desc}</div>
-              <div className="rMax">
-                Max people: <b>{roomData.maxPeople}</b>
-              </div>
-              <div className="rPrice">{roomData.price}</div>
-            </div>
-            <div className="rSelectRooms">
-              {roomData?.roomNumbers?.map((roomNumber) => (
-                <div className="room">
-                  <label>{roomNumber.number}</label>
-                  <input
-                    type="checkbox"
-                    value={roomNumber._id}
-                    onChange={handleSelect}
-                    disabled={!isAvailable(roomNumber)}
-                  />
+        {roomData &&
+          roomData.map((item) => {
+            <div className="rItem" key={roomData._id}>
+              <div className="rroomDataInfo">
+                <div className="rTitle">{roomData.title}</div>
+                <div className="rDesc">{roomData.desc}</div>
+                <div className="rMax">
+                  Max people: <b>{roomData.maxPeople}</b>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
+                <div className="rPrice">{roomData.price}</div>
+              </div>
+              <div className="rSelectRooms">
+                {roomData?.roomNumbers?.map((roomNumber) => (
+                  <div className="room">
+                    <label>{roomNumber.number}</label>
+                    <input
+                      type="checkbox"
+                      value={roomNumber._id}
+                      onChange={handleSelect}
+                      disabled={!isAvailable(roomNumber)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>;
+          })}
         {roomData > 1 && (
           <button onClick={handleClick} className="rButton">
             Reserve Now!
