@@ -17,10 +17,20 @@ function Reserve({ setOpen, hotelId }) {
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
 
+  const getAllRomms = () => {
+    data.map((item) => {
+      axios
+        .get(`http://localhost:8800/api/rooms/${item}`)
+        .then((response) => setRommData((prev) => [...prev, response.data]));
+    });
+  };
+
   useEffect(() => {
-    const dat = axios
-      .get(`http://localhost:8800/api/rooms/${data[0]}`)
-      .then((response) => setRommData(response.data));
+    // const dat = axios
+    //   .get(`http://localhost:8800/api/rooms/${data[0]}`)
+    //   .then((response) => setRommData(response.data));
+
+    getAllRomms();
   }, [data]);
 
   // useEffect(() => {
@@ -56,7 +66,7 @@ function Reserve({ setOpen, hotelId }) {
           <span>Select your rooms:</span>
         )}
 
-        {roomData &&
+        {roomData && (
           <div className="rItem" key={roomData._id}>
             <div className="rroomDataInfo">
               <div className="rTitle">{roomData.title}</div>
@@ -80,7 +90,7 @@ function Reserve({ setOpen, hotelId }) {
               ))}
             </div>
           </div>
-        }
+        )}
         {roomData > 1 && (
           <button onClick={handleClick} className="rButton">
             Reserve Now!
