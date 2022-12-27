@@ -8,27 +8,31 @@ import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { TailSpin } from "react-loader-spinner";
 
 function Reserve({ setOpen, hotelId }) {
   const [roomData, setRommData] = React.useState([]);
   const [selectedRooms, setSelectedRooms] = React.useState([]);
-
+  const [roomLoading, setRoomLoading] = React.useState(true);
 
   const handleSelect = (e) => {
-    const selected  = e.target.checked
-    const value = e.target.value
+    const selected = e.target.checked;
+    const value = e.target.value;
     setSelectedRooms(
-      selected ? [...selectedRooms, value] : selectedRooms.filter(item => item !== value)
-    )
+      selected
+        ? [...selectedRooms, value]
+        : selectedRooms.filter((item) => item !== value)
+    );
   };
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
 
   const getAllRomms = () => {
     data.map((item) => {
-      axios
-        .get(`http://localhost:8800/api/rooms/${item}`)
-        .then((response) => setRommData((prev) => [...prev, response.data]));
+      axios.get(`http://localhost:8800/api/rooms/${item}`).then((response) => {
+        setRommData((prev) => [...prev, response.data]);
+        setRoomLoading(!roomLoading);
+      });
     });
   };
 
@@ -41,7 +45,7 @@ function Reserve({ setOpen, hotelId }) {
   const handleClick = () => {
     return {};
   };
-  
+
   const isAvailable = false;
   return (
     <div className="reserve">
@@ -52,41 +56,51 @@ function Reserve({ setOpen, hotelId }) {
           onClick={() => setOpen(false)}
         />
         {roomData.length < 1 ? (
-          <div>No rooms available at the moment</div>
+          roomLoading && (
+            <TailSpin
+              height="30"
+              width="30"
+              color="#4fa94d"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          )
         ) : (
-          <span>Select your rooms:</span>
-        )}
-
-        {roomData &&
-          roomData.map((item) => {
-            <div className="rItem" key={roomData._id}>
-              <div className="rroomDataInfo">
-                <div className="rTitle">{roomData.title}</div>
-                <div className="rDesc">{roomData.desc}</div>
-                <div className="rMax">
-                  Max people: <b>{roomData.maxPeople}</b>
-                </div>
-                <div className="rPrice">{roomData.price}</div>
-              </div>
-              <div className="rSelectRooms">
-                {roomData?.roomNumbers?.map((roomNumber) => (
-                  <div className="room">
-                    <label>{roomNumber.number}</label>
-                    <input
-                      type="checkbox"
-                      value={roomNumber._id}
-                      onChange={handleSelect}
-                      disabled={!isAvailable(roomNumber)}
-                    />
+          <>
+            <span>Select your rooms:</span>
+            {roomData &&
+              roomData.map((item) => {
+                <div className="rItem" key={roomData._id}>
+                  <div className="rroomDataInfo">
+                    <div className="rTitle">{roomData.title}</div>
+                    <div className="rDesc">{roomData.desc}</div>
+                    <div className="rMax">
+                      Max people: <b>{roomData.maxPeople}</b>
+                    </div>
+                    <div className="rPrice">{roomData.price}</div>
                   </div>
-                ))}
-              </div>
-            </div>;
-          })}
-        {roomData > 1 && (
-          <button onClick={handleClick} className="rButton">
-            Reserve Now!
-          </button>
+                  <div className="rSelectRooms">
+                    {roomData?.roomNumbers?.map((roomNumber) => (
+                      <div className="room">
+                        <label>{roomNumber.number}</label>
+                        <input
+                          type="checkbox"
+                          value={roomNumber._id}
+                          onChange={handleSelect}
+                          disabled={!isAvailable(roomNumber)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <button onClick={handleClick} className="rButton">
+                    Reserve Now!
+                  </button>
+                </div>;
+              })}
+          </>
         )}
       </div>
     </div>
