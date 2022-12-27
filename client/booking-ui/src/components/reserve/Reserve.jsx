@@ -11,9 +11,15 @@ import { useEffect } from "react";
 
 function Reserve({ setOpen, hotelId }) {
   const [roomData, setRommData] = React.useState([]);
-  const [selectedRooms, setSelectedRooms] = React.useState();
-  const handleSelect = () => {
-    return {};
+  const [selectedRooms, setSelectedRooms] = React.useState([]);
+
+
+  const handleSelect = (e) => {
+    const selected  = e.target.checked
+    const value = e.target.value
+    setSelectedRooms(
+      selected ? [...selectedRooms, value] : selectedRooms.filter(item => item !== value)
+    )
   };
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
