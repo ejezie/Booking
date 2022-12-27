@@ -9,6 +9,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { TailSpin } from "react-loader-spinner";
+import { useCallback } from "react";
 
 function Reserve({ setOpen, hotelId }) {
   const [roomData, setRommData] = React.useState([]);
@@ -27,14 +28,14 @@ function Reserve({ setOpen, hotelId }) {
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
 
-  const getAllRomms = () => {
+  const getAllRomms = useCallback(() => {
     data.map((item) => {
       axios.get(`http://localhost:8800/api/rooms/${item}`).then((response) => {
         setRommData((prev) => [...prev, response.data]);
         setRoomLoading(!roomLoading);
       });
     });
-  };
+  }, [data, roomLoading]);
 
   useEffect(() => {
     getAllRomms();
