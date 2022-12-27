@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 function Reserve({ setOpen, hotelId }) {
   const [roomData, setRommData] = React.useState([]);
+  const [selectedRooms, setSelectedRooms] = React.useState();
   const handleSelect = () => {
     return {};
   };
@@ -26,31 +27,15 @@ function Reserve({ setOpen, hotelId }) {
   };
 
   useEffect(() => {
-    // const dat = axios
-    //   .get(`http://localhost:8800/api/rooms/${data[0]}`)
-    //   .then((response) => setRommData(response.data));
-
     getAllRomms();
   }, [data]);
-
-  // useEffect(() => {
-  //   Promise.all(
-  //     data.map((item) => {
-  //         const dat = axios.get(`http://localhost:8800/api/rooms/${item}`);
-  //         console.log(dat, "Promise")
-  //     })
-  //   ).then((data) => setRommData(data)).catch((err) => console.log(err))
-  //   console.log("1")
-  // }, [setOpen]);
-  // const roomData = async () => {
-  //   return await promiseData?.then((data) => { return JSON.parse(data, null, 2)});
-  // };
 
   console.log(roomData, "roomData");
 
   const handleClick = () => {
     return {};
   };
+  
   const isAvailable = false;
   return (
     <div className="reserve">
