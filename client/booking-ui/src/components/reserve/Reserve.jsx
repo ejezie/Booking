@@ -75,24 +75,24 @@ function Reserve({ setOpen, hotelId }) {
             {roomData &&
               roomData.map((item) => (
                 <>
-                  <div className="rItem" key={roomData._id}>
+                  <div className="rItem" key={item._id}>
                     <div className="rroomDataInfo">
-                      <div className="rTitle">{roomData.title}</div>
-                      <div className="rDesc">{roomData.desc}</div>
+                      <div className="rTitle">{item.title}</div>
+                      <div className="rDesc">{item.desc}</div>
                       <div className="rMax">
-                        Max people: <b>{roomData.maxPeople}</b>
+                        Max people: <b>{item.maxPeople}</b>
                       </div>
-                      <div className="rPrice">{roomData.price}</div>
+                      <div className="rPrice">{item.price}</div>
                     </div>
                     <div className="rSelectRooms">
-                      {roomData?.roomNumbers?.map((roomNumber) => (
+                      {item?.roomNumbers?.map((roomNumber, i) => (
                         <div className="room">
-                          <label>{roomNumber.number}</label>
+                          <label>{i + 1}</label>
                           <input
                             type="checkbox"
                             value={roomNumber._id}
                             onChange={handleSelect}
-                            disabled={!isAvailable(roomNumber)}
+                            // disabled={!isAvailable(roomNumber)}
                           />
                         </div>
                       ))}
