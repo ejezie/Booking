@@ -45,7 +45,7 @@ function Reserve({ setOpen, hotelId }) {
 
     let dateList = []
     while(date < end){
-      dateList.push(new Date(date));
+      dateList.push(new Date(date).getTime());
       date.setDate(date.getDate() + 1);
     }
     return dateList;
@@ -55,7 +55,7 @@ function Reserve({ setOpen, hotelId }) {
     getAllRomms();
   }, [data]);
 
-  console.log(dates, "roomData");
+  console.log(roomData, "roomData");
   console.log(getDatesInRange(dates[0].startDate, dates[0].endDate), "dates");
 
   const handleClick = () => {
@@ -102,7 +102,7 @@ function Reserve({ setOpen, hotelId }) {
                     <div className="rSelectRooms">
                       {item?.roomNumbers?.map((roomNumber, i) => (
                         <div className="room">
-                          <label>{i + 1}</label>
+                          <label>{roomNumber?.number}</label>
                           <input
                             type="checkbox"
                             value={roomNumber._id}
