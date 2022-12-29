@@ -38,6 +38,16 @@ function Reserve({ setOpen, hotelId }) {
     });
   };
 
+  const getDatesInRange = (start, end) => {
+    const date = new Date(start).getTime();
+    let dateList = []
+    while(date < end){
+      dateList.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+    return dateList;
+  }
+
   useEffect(() => {
     getAllRomms();
   }, [data]);
