@@ -27,11 +27,12 @@ function Reserve({ setOpen, hotelId }) {
   };
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
+  const {date} = useContext(SearchContext)
 
   const getAllRomms = () => {
     data.map((item) => {
       axios.get(`http://localhost:8800/api/rooms/${item}`).then((response) => {
-        setRommData([response.data])
+        setRommData([...roomData, response.data])
         setRoomLoading(false);
       });
     });
@@ -41,7 +42,7 @@ function Reserve({ setOpen, hotelId }) {
     getAllRomms();
   }, [data]);
 
-  console.log(data, "roomData");
+  console.log(selectedRooms, "roomData");
 
   const handleClick = () => {
     return {};
