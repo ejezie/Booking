@@ -29,15 +29,12 @@ function Reserve({ setOpen, hotelId }) {
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
 
   const getAllRomms = () => {
-    let rooms = [];
     data.map((item) => {
       axios.get(`http://localhost:8800/api/rooms/${item}`).then((response) => {
-        // rooms.push(response.data);
         setRommData([response.data])
         setRoomLoading(false);
       });
     });
-    // setRommData(rooms);
   };
 
   useEffect(() => {
