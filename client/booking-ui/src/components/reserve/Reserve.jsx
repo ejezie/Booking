@@ -28,22 +28,23 @@ function Reserve({ setOpen, hotelId }) {
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
 
-  const getAllRomms = useCallback(() => {
+  const getAllRomms = () => {
     let rooms = [];
     data.map((item) => {
       axios.get(`http://localhost:8800/api/rooms/${item}`).then((response) => {
-        rooms.push(response.data)
+        // rooms.push(response.data);
+        setRommData([response.data])
         setRoomLoading(false);
       });
     });
-    setRommData(rooms)
-  }, [data, roomLoading]);
+    // setRommData(rooms);
+  };
 
   useEffect(() => {
     getAllRomms();
   }, [data]);
 
-  console.log(roomData, "roomData");
+  console.log(data, "roomData");
 
   const handleClick = () => {
     return {};
@@ -75,7 +76,7 @@ function Reserve({ setOpen, hotelId }) {
           <>
             <span>Select your rooms:</span>
             {roomData &&
-              roomData.map((item) => (
+              roomData?.map((item) => (
                 <>
                   <div className="rItem" key={item._id}>
                     <div className="rroomDataInfo">
