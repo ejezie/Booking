@@ -38,8 +38,11 @@ function Reserve({ setOpen, hotelId }) {
     });
   };
 
-  const getDatesInRange = (start, end) => {
-    const date = new Date(start).getTime();
+  const getDatesInRange = (startDate, endDate) => {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const date = new Date(start.getTime());
+
     let dateList = []
     while(date < end){
       dateList.push(new Date(date));
@@ -52,7 +55,8 @@ function Reserve({ setOpen, hotelId }) {
     getAllRomms();
   }, [data]);
 
-  console.log(selectedRooms, "roomData");
+  console.log(date, "roomData");
+  // console.log(getDatesInRange(date[0].startDate. date[0].endDate), "roomData");
 
   const handleClick = () => {
     return {};
