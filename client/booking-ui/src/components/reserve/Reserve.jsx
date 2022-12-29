@@ -27,7 +27,7 @@ function Reserve({ setOpen, hotelId }) {
   };
 
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
-  const {date} = useContext(SearchContext)
+  const {dates} = useContext(SearchContext)
 
   const getAllRomms = () => {
     data.map((item) => {
@@ -55,8 +55,8 @@ function Reserve({ setOpen, hotelId }) {
     getAllRomms();
   }, [data]);
 
-  console.log(date, "roomData");
-  // console.log(getDatesInRange(date[0].startDate. date[0].endDate), "roomData");
+  console.log(dates, "roomData");
+  console.log(getDatesInRange(dates[0].startDate, dates[0].endDate), "dates");
 
   const handleClick = () => {
     return {};
