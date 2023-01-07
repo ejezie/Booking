@@ -56,7 +56,7 @@ function Reserve({ setOpen, hotelId }) {
   }, [data]);
 
   console.log(roomData, "roomData");
-  console.log(getDatesInRange(dates[0].startDate, dates[0].endDate), "dates");
+  const allDate = getDatesInRange(dates[0].startDate, dates[0].endDate);
 
   const handleClick = () => {
     return {};
